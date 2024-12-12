@@ -12,7 +12,7 @@ public class Season implements Streamable {
     private Show show;
 
     /**
-     * @param show The {@link Show} the season is from
+     * @param show The show the season belongs to
      * @param seasonNumber The season number of the season
      * @param yearOfRelease The year the season was released
      * @param numberOfEpisodes The number of episodes in the season
@@ -57,7 +57,7 @@ public class Season implements Streamable {
 
     @Override
     public String getName() {
-        return "";
+        return this.show.getName() + " Season " + this.seasonNumber;
     }
 
     public  int getNumberOfEpisodes() {
@@ -73,6 +73,11 @@ public class Season implements Streamable {
     }
 
     public void setExclusiveTo(StreamingService exclusiveTo) {
+        if(this.exclusiveTo != null){
+            exclusiveTo.removeMedia(this);
+        }
+
+        exclusiveTo.addMedia(this);
         this.exclusiveTo = exclusiveTo;
     }
 
