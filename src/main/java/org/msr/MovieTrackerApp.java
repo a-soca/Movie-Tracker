@@ -10,6 +10,7 @@ public class MovieTrackerApp {
         System.out.println("Movie Tracker App");
 
         StreamingService Notflix = new StreamingService("Notflix", 13.99);
+        StreamingService Notflix = new StreamingService("Notflix", 13.99);
 
         Show theOffice = new Show("The Office", 2005, Genre.comedy);
 
