@@ -1,4 +1,6 @@
-package org.msr;
+package org.msr.services;
+
+import org.msr.storage.Library;
 
 public class StreamingService implements Billable {
     private String name;

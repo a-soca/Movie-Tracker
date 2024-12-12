@@ -1,4 +1,6 @@
-package org.msr;
+package org.msr.storage;
+
+import org.msr.media.Streamable;
 
 import java.util.HashMap;
 

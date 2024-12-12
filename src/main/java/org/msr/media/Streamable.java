@@ -1,4 +1,4 @@
-package org.msr;
+package org.msr.media;
 
 public interface Streamable {
     public void setName(String name);

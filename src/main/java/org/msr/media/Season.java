@@ -1,4 +1,4 @@
-package org.msr;
+package org.msr.media;
 
 public abstract class Season {
     public abstract int getSeasonNumber();

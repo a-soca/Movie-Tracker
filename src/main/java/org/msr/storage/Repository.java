@@ -1,4 +1,4 @@
-package org.msr;
+package org.msr.storage;
 
 public abstract class Repository {
     public abstract void addItem(Object item);
