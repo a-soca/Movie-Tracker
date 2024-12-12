@@ -5,6 +5,7 @@ public class Film implements Streamable {
     private int yearOfRelease;
     private Genre genre;
     private double rating;
+    //TODO add runtime
 
     public Film(String name, int yearOfRelease, Genre genre) {
         setName(name);
