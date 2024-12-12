@@ -19,7 +19,6 @@ public class Film implements Streamable {
     }
 
 
-    @Override
     public void setName(String name) {
         this.name = name;
     }
@@ -29,7 +28,6 @@ public class Film implements Streamable {
         return this.name;
     }
 
-    @Override
     public void setYearOfRelease(int yearOfRelease) {
         this.yearOfRelease = yearOfRelease;
     }
@@ -39,7 +37,6 @@ public class Film implements Streamable {
         return this.yearOfRelease;
     }
 
-    @Override
     public void setGenre(Genre genre) {
         this.genre = genre;
     }
@@ -49,7 +46,6 @@ public class Film implements Streamable {
         return this.genre;
     }
 
-    @Override
     public void setRating(double rating) {
         this.rating = rating;
     }

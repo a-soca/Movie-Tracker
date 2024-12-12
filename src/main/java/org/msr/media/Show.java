@@ -2,7 +2,7 @@ package org.msr.media;
 
 import java.util.ArrayList;
 
-public abstract class Show extends Film {
+public class Show extends Film {
     ArrayList<Season> seasons;
 
     public Show(String name, int yearOfRelease, Genre genre) {
@@ -13,5 +13,13 @@ public abstract class Show extends Film {
     public Show(String name, int yearOfRelease, Genre genre, double rating) {
         this(name, yearOfRelease, genre);
         setRating(rating);
+    }
+
+    public void setSeasons(ArrayList<Season> seasons) {
+        this.seasons = seasons;
+    }
+
+    public ArrayList<Season> getSeasons() {
+        return seasons;
     }
 }
