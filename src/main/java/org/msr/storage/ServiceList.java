@@ -4,8 +4,11 @@ import org.msr.services.StreamingService;
 
 import java.util.HashMap;
 
+/**
+ * A service list is a {@link Repository} which stores a collection of {@link StreamingService}
+ */
 public class ServiceList implements Repository {
-    private final HashMap<String, StreamingService> services;
+    private final HashMap<String, StreamingService> services; // A hash map of streaming services (key = service name)
 
     public ServiceList() {
         services = new HashMap<>();

@@ -1,9 +1,12 @@
 package org.msr.storage;
 
+/**
+ * Repositories store data which can be accessed, added or removed
+ */
 public interface Repository {
-    public void addItem(Object item);
-    public void removeItem(String id);
-    public Object getItem(String id);
-    public int getItemCount();
-    public Object[] getItems();
+    void addItem(Object item);
+    void removeItem(String id);
+    Object getItem(String id);
+    int getItemCount();
+    Object[] getItems();
 }

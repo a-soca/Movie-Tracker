@@ -1,6 +1,9 @@
 package org.msr.services;
 
+/**
+ * A service which costs money
+ */
 public interface Billable {
-    public void setPrice(double price);
-    public double getPrice();
+    void setPrice(double price);
+    double getPrice();
 }

@@ -1,5 +1,8 @@
 package org.msr.media;
 
+/**
+ * The genres of media
+ */
 public enum Genre {
     action,
     adventure,
