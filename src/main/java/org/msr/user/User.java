@@ -27,8 +27,12 @@ public class User {
         System.out.println("Streamable Media Available:\n" + StreamingLibrary.getAllMedia());
     }
 
-    public void trackStreamingService(String name) {
-        trackedServices.addItem(StreamingService.getServiceList().getItem(name));
+    public void trackStreamingService(String name) throws Exception {
+        if(StreamingService.getService(name) == null) {
+            throw new Exception("The Streaming Service " + name + " does not appear to exist");
+        } else {
+            trackedServices.addItem(StreamingService.getServiceList().getItem(name));
+        }
     }
 
     public void untrackStreamingService(String name) {
@@ -80,7 +84,7 @@ public class User {
      * Prints the names of all the {@link StreamingService} the user has tracked
      */
     public void printAllTrackedServices() {
-        if(getTrackedServices().length == 0) { // If the tracked services list is empty
+        if(getTrackedServices().length < 1) { // If the tracked services list is empty
             System.out.println("No Tracked Services Available");
         } else {
             System.out.println("Tracked Streaming Services:");
@@ -94,7 +98,7 @@ public class User {
      * Prints the names of all the {@link Streamable} media the user has tracked
      */
     public void printAllTrackedMedia() {
-        if(getAllTrackedMedia().length == 0) { // If the tracked media list is empty
+        if(getAllTrackedMedia().length < 1) { // If the tracked media list is empty
             System.out.println("No Tracked Media Available");
         } else {
             System.out.println("Tracked Streamable Media:");
@@ -105,7 +109,11 @@ public class User {
         }
     }
 
-    public void printExclusiveMediaFromService(String service) {
+    public void printExclusiveMediaFromService(String service) throws Exception {
+        if(StreamingService.getService(service) == null) { // If the service is not in the app streaming service list
+            throw new Exception("The service " + service + " does not appear to exist");
+        }
+
         System.out.println("Exclusive Media on " + service + ":");
         System.out.println(StreamingService.getService(service).getAllMedia());
     }
