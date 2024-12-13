@@ -2,6 +2,7 @@ package org.msr.services;
 
 import org.msr.media.Show;
 import org.msr.media.Streamable;
+import org.msr.storage.ServiceList;
 import org.msr.storage.StreamingLibrary;
 
 public class StreamingService implements Billable {
@@ -10,11 +11,19 @@ public class StreamingService implements Billable {
 
     private StreamingLibrary library;
 
+    private static final ServiceList serviceList = new ServiceList();
+
     public StreamingService(String name, double price) {
         setName(name);
         setPrice(price);
 
         setLibrary(new StreamingLibrary());
+
+        serviceList.addItem(this);
+    }
+
+    public static ServiceList getServiceList() {
+        return serviceList;
     }
 
     public String getName() {
@@ -51,20 +60,35 @@ public class StreamingService implements Billable {
         }
     }
 
-    public void addShow(Show show) {
-        getLibrary().addItem(show.getSeasons());
-    }
-
     public void removeMedia(Streamable media) {
         getLibrary().removeItem(media.getName());
     }
 
     public String getAllMedia() {
         String output = "";
-        for (int i = 0; i < getLibrary().getItemNames().length; i++) {
+        for (int i = 0; i < getLibrary().getItemCount(); i++) {
             output = output.concat(getLibrary().getItemNames()[i] + "\n");
         }
 
         return output;
+    }
+
+    public static StreamingService getService(String name) {
+        return (StreamingService) serviceList.getItem(name);
+    }
+
+    public static String getAllServices() {
+        String output = "";
+        for(int i = 0; i < serviceList.getItemCount(); i++) {
+            output = output.concat(getServiceList().getItems()[i].toString() + "\n");
+        }
+
+        return output;
+    }
+
+    @Override
+    public String toString() {
+        return "Name: " + getName() +
+                ", Price: " + getPrice();
     }
 }
