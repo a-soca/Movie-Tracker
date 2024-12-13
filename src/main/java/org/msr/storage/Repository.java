@@ -5,4 +5,5 @@ public interface Repository {
     public void removeItem(String id);
     public Object getItem(String id);
     public int getItemCount();
+    public Object[] getItems();
 }
