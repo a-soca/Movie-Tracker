@@ -72,7 +72,7 @@ public class Season implements Streamable {
     @Override
     public void addRating(double rating) {
         numRatings++;
-        setRating((getRating() + rating)/numRatings);
+        setRating((getRating() + rating)/numRatings); // Recalculate the average rating of the show and set it
     }
 
     @Override
@@ -93,11 +93,11 @@ public class Season implements Streamable {
     }
 
     private void setExclusiveTo(StreamingService exclusiveTo) {
-        if(this.exclusiveTo != null){
-            exclusiveTo.removeMedia(this);
+        if(this.exclusiveTo != null){ // If the season is already exclusive to another service,
+            exclusiveTo.removeMedia(this); // Remove the season from the other service
         }
 
-        exclusiveTo.addMedia(this);
+        exclusiveTo.addMedia(this); // Add this season to the streaming service
         this.exclusiveTo = exclusiveTo;
     }
 

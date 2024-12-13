@@ -5,19 +5,27 @@ import org.msr.media.Streamable;
 import org.msr.storage.ServiceList;
 import org.msr.storage.StreamingLibrary;
 
+/**
+ * A Streaming Service is a {@link Billable} service which hosts {@link Streamable} media
+ */
 public class StreamingService implements Billable {
     private String name;
     private double price;
 
-    private StreamingLibrary library;
+    private StreamingLibrary library; // The exclusive media the streaming service hosts
 
-    private static final ServiceList serviceList = new ServiceList();
+    private static final ServiceList serviceList = new ServiceList(); // A global list of all streaming services
 
+    /**
+     * The constructor for a {@link StreamingService}
+     * @param name The name of the streaming service
+     * @param price The monthly price of the service
+     */
     public StreamingService(String name, double price) {
         setName(name);
         setPrice(price);
 
-        setLibrary(new StreamingLibrary());
+        setLibrary(new StreamingLibrary()); // Create a new streaming library to store exclusive media
 
         serviceList.addItem(this);
     }
@@ -51,12 +59,13 @@ public class StreamingService implements Billable {
     }
 
     public void addMedia(Streamable media) {
-        if(media instanceof Show show) {
+        if(media instanceof Show show) { // If the media is a show,
+            // Add each season of the show to the service as an exclusive
             for(int i = 0; i < show.getNumberOfSeasons(); i++) {
                 addMedia(show.getSeasons().get(i));
             }
-        } else {
-            getLibrary().addItem(media);
+        } else { // Otherwise,
+            getLibrary().addItem(media); // Add the media to the service as an exclusive
         }
     }
 
@@ -64,6 +73,9 @@ public class StreamingService implements Billable {
         getLibrary().removeItem(media.getName());
     }
 
+    /**
+     * @return A string with the name of each exclusive on the service on a new line
+     */
     public String getAllMedia() {
         String output = "";
         for (int i = 0; i < getLibrary().getItemCount(); i++) {
@@ -77,6 +89,9 @@ public class StreamingService implements Billable {
         return (StreamingService) serviceList.getItem(name);
     }
 
+    /**
+     * @return A string with the name of each service on a new line
+     */
     public static String getAllServices() {
         String output = "";
         for(int i = 0; i < serviceList.getItemCount(); i++) {

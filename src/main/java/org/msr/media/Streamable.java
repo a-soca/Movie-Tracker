@@ -1,10 +1,13 @@
 package org.msr.media;
 
+/**
+ * A type of media which can be streamed
+ */
 public interface Streamable {
-    public String getName();
-    public int getYearOfRelease();
-    public Genre getGenre();
-    public int getRuntime();
-    public double getRating();
-    public void addRating(double rating);
+    String getName();
+    int getYearOfRelease();
+    Genre getGenre();
+    int getRuntime();
+    double getRating();
+    void addRating(double rating);
 }

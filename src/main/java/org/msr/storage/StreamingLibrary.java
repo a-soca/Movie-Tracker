@@ -4,9 +4,14 @@ import org.msr.media.Streamable;
 
 import java.util.HashMap;
 
+/**
+ * A Streaming Library is a {@link Repository} which stores {@link Streamable} media. Stores a list of all
+ * media added to the application in {@link #mediaList} (accessible with {@link #getMedia(String)})
+ */
 public class StreamingLibrary implements Repository {
-    HashMap<String, Streamable> library;
+    HashMap<String, Streamable> library; // A Hashmap to store Streamable media (key = media name)
 
+    // A master library for all streamable media added to the application
     private static final StreamingLibrary mediaList = new StreamingLibrary();
 
     public StreamingLibrary() {
@@ -52,6 +57,9 @@ public class StreamingLibrary implements Repository {
         return (Streamable) getMediaList().getItem(mediaName);
     }
 
+    /**
+     * @return A string of all the streamable media added to the app with each media item on a new line
+     */
     public static String getAllMedia() {
         String output = "";
         for(int i = 0; i < getMediaList().getItemCount(); i++) {

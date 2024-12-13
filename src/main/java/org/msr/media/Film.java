@@ -2,6 +2,9 @@ package org.msr.media;
 
 import org.msr.storage.StreamingLibrary;
 
+/**
+ * A film is a single piece of media which does not have episodes or seasons.
+ */
 public class Film implements Streamable {
     private String name;
     private int yearOfRelease;
@@ -10,6 +13,14 @@ public class Film implements Streamable {
     private int runtime;
     private int numRatings = 0;
 
+    /**
+     * Constructor for a film with no default rating (0)
+     * @param name The name of the film
+     * @param yearOfRelease The year the film was released
+     * @param genre The genre of the film
+     * @param runtime How long the film is in minutes
+     * @throws Exception When a movie with the same name and release year is attempted to be created
+     */
     public Film(String name, int yearOfRelease, Genre genre, int runtime) throws Exception {
         Streamable duplicate = StreamingLibrary.getMedia(name);
         if(duplicate != null && duplicate.getYearOfRelease() == yearOfRelease) {
@@ -26,9 +37,27 @@ public class Film implements Streamable {
         StreamingLibrary.getMediaList().addItem(this);
     }
 
+    /**
+     * Constructor for a film with a default rating
+     * @param name The name of the film
+     * @param yearOfRelease The year the film was released
+     * @param genre The genre of the film
+     * @param runtime How long the film is in minutes
+     * @param rating The default rating of the film
+     * @throws Exception When a movie with the same name and release year is attempted to be created
+     */
     public Film(String name, int yearOfRelease, Genre genre, int runtime, double rating) throws Exception {
         this(name, yearOfRelease, genre, runtime);
         setRating(rating);
+        setNumRatings(1);
+    }
+
+    public int getNumRatings() {
+        return numRatings;
+    }
+
+    public void setNumRatings(int numRatings) {
+        this.numRatings = numRatings;
     }
 
     private void setRuntime(int runtime) {
@@ -78,8 +107,8 @@ public class Film implements Streamable {
 
     @Override
     public void addRating(double rating) {
-        numRatings++;
-        setRating((getRating() + rating) / numRatings);
+        setNumRatings(getNumRatings() + 1);
+        setRating((getRating() + rating) / getNumRatings());
     }
 
     @Override
