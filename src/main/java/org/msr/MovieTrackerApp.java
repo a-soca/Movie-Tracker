@@ -215,6 +215,7 @@ public class MovieTrackerApp {
                             "ExclusiveTo    - Show Seasons Exclusive to a Service\n" +
                             "TrackService   - Track a Streaming Service\n" +
                             "TrackMedia     - Track Media\n" +
+                            "AddRating      - Add a Rating\n" +
                             "UntrackService - Untrack a Streaming Service\n" +
                             "UntrackMedia   - Untrack Media\n" +
                             "Exit           - Exit the application\n"

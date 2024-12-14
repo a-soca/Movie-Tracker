@@ -25,6 +25,7 @@ development team at MSR to develop a system to help him do just that.
 | ExclusiveTo    | Show Seasons Exclusive to a Service                               |
 | TrackService   | Track a Streaming Service                                         |
 | TrackMedia     | Track Media                                                       |
+| AddRating      | Add a Rating to media you have tracked                            |
 | UntrackService | Untrack a Streaming Service                                       |
 | UntrackMedia   | Untrack Media                                                     |
 | Exit           | Exit the application                                              |
